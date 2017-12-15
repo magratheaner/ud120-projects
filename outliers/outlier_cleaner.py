@@ -10,6 +10,18 @@ def outlierCleaner(predictions, ages, net_worths):
         Return a list of tuples named cleaned_data where 
         each tuple is of the form (age, net_worth, error).
     """
+
+    from sklearn.metrics import ...
+    errors = metric(predictions, net_worths)
+
+
+    ten_percent = len(predictions) / 10
+    
+    tuples = []
+    for i in range(len(predictions)):
+        tuples.append((ages[i], net_worths[i], errors[i]))
+
+    outliers = sorted(tuples, key=lambda x: x[2])[:ten_percent]
     
     cleaned_data = []
 
